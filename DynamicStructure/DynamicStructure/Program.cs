@@ -1,12 +1,14 @@
-﻿using System;
+﻿using DynamicStructure.DynamicStructure.Console;
+using System;
 
-namespace DynamicStructure // Note: actual namespace depends on the project name.
+namespace DynamicStructure
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            MenuLogic mainMenu = new MenuLogic(MainMenu.mainMenu);
+            mainMenu.Run();
         }
     }
 }
