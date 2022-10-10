@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DynamicStructure.DynamicStructure.Console
+namespace DynamicStructure.DynamicStructure.ConsoleUI
 //осталось только переписать этот класс
 {
     public abstract class Menu
@@ -34,16 +34,6 @@ namespace DynamicStructure.DynamicStructure.Console
         public Action<Menu> Action { get; }
 
         public MenuAction(string name, Action<Menu> action) : base(name)
-        {
-            Action = action;
-        }
-    }
-
-    public class MenuApplicationStack : Menu
-    {
-        public Action Action { get; }
-
-        public MenuApplicationStack(string name, Action action) : base(name)
         {
             Action = action;
         }

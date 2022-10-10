@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicStructure.DynamicStructure.Console
+namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
     public static class StringExtension
     {

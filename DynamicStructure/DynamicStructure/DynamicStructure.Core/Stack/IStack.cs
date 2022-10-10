@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace DynamicStructure.DynamicStructure.Core.Stack
 {
-    internal interface IStack
+    public interface IStack<T>
     {
+
     }
 }

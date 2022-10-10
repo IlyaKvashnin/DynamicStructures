@@ -1,4 +1,4 @@
-﻿using DynamicStructure.DynamicStructure.Console;
+﻿using DynamicStructure.DynamicStructure.ConsoleUI;
 using System;
 using System.Collections;
 
