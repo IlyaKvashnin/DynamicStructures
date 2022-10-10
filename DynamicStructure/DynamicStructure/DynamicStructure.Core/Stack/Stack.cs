@@ -8,23 +8,16 @@ using System.Threading.Tasks;
 
 namespace DynamicStructure.DynamicStructure.Core.Stack
 {
-    public class Stack<T> : IStack<T>
+    public static class Stack<T> 
     {
-        SinglyLinkedList<T> list;
+        public static SinglyLinkedList<T> List = new SinglyLinkedList<T>();
 
-        public Stack()
-        {
-            this.list = null;
-        }
-        internal void Push()
+        public static void Push()
         {
             var value = Console.ReadLine();
-            list.AddAtStart((T)Convert.ChangeType(value,typeof(T)));
-            Console.WriteLine("{0} pushed to stack", value);
+            List.InsertAtFront((T)Convert.ChangeType(value, typeof(T)));
+            Console.WriteLine($"Pushed {0}", value);
         }
-
-
-
 
     }
 }
