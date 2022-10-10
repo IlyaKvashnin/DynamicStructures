@@ -1,6 +1,6 @@
 ﻿using DynamicStructure.DynamicStructure.Core.Stack;
 
-namespace DynamicStructure.DynamicStructure.Console
+namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
     public class MainMenu
     {

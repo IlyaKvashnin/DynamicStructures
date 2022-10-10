@@ -8,5 +8,7 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
 {
     internal class Node
     {
+       
+        
     }
 }

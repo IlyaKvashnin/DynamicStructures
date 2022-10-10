@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DynamicStructure.DynamicStructure.Console
+namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
     public class MenuLogic
     {
@@ -43,10 +43,6 @@ namespace DynamicStructure.DynamicStructure.Console
                                 index = 0;
                                 _current = category;
                                 ConsoleHelper.CleanScreen();
-                                break;
-                            case MenuApplicationStack executeAction:
-                                executeAction.Action();
-                                ReturnToMainMenu(index);
                                 break;
                             case MenuApplicationStackPush executeAction:
                                 executeAction.Action();

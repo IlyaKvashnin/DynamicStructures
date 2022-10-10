@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DynamicStructure.DynamicStructure.Console
+namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
     public class ExitMenu
     {

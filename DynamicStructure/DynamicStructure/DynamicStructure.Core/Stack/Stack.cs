@@ -1,4 +1,5 @@
-﻿using DynamicStructure.DynamicStructure.Console;
+﻿using DynamicStructure.DynamicStructure.ConsoleUI;
+using DynamicStructure.DynamicStructure.Core.SinglyLinkedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,18 +8,23 @@ using System.Threading.Tasks;
 
 namespace DynamicStructure.DynamicStructure.Core.Stack
 {
-    public class Stack
+    public class Stack<T> : IStack<T>
     {
-        public static void Print()
+        SinglyLinkedList<T> list;
+
+        public Stack()
         {
-            ConsoleHelper.CleanScreen();
-            System.Console.WriteLine("123");
+            this.list = null;
+        }
+        internal void Push()
+        {
+            var value = Console.ReadLine();
+            list.AddAtStart((T)Convert.ChangeType(value,typeof(T)));
+            Console.WriteLine("{0} pushed to stack", value);
         }
 
-        public static void Push()
-        {
-            ConsoleHelper.CleanScreen();
-            System.Console.WriteLine("123");
-        }
+
+
+
     }
 }
