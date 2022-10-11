@@ -82,6 +82,5 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
         {
             return this.GetEnumerator();
         }
-
     }
 }
