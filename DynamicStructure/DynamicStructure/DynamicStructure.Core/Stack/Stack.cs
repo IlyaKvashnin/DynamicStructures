@@ -8,16 +8,25 @@ using System.Threading.Tasks;
 
 namespace DynamicStructure.DynamicStructure.Core.Stack
 {
-    public static class Stack<T> 
+    public class Stack<T> 
     {
-        public static SinglyLinkedList<T> List = new SinglyLinkedList<T>();
-
-        public static void Push()
+        private ListNode<T> tail;
+        public int Count { get; private set; }
+        public void Push(T value)
         {
-            var value = Console.ReadLine();
-            List.InsertAtFront((T)Convert.ChangeType(value, typeof(T)));
-            Console.WriteLine($"Pushed {0}", value);
+            tail = new ListNode<T>(value, tail);
+            Count++;
+            Console.WriteLine($"Pushed {value}");
         }
-
+        public T Pop()
+        {
+            if (tail == null)
+                throw new InvalidOperationException("Стек пуст, нечего извлекать.");
+            var node = tail;
+            tail = tail.Next;
+            Count--;
+            Console.WriteLine($"Poped {node.Item}");
+            return node.Item;
+        }
     }
 }

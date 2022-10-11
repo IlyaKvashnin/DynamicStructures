@@ -4,42 +4,42 @@ using System.Collections.Generic;
 namespace DynamicStructure.DynamicStructure.ConsoleUI
 //осталось только переписать этот класс
 {
-    public abstract class Menu
+    public abstract class MenuItem
     {
         public string Name { get; }
 
-        public Menu(string name)
+        public MenuItem(string name)
         {
             Name = name;
         }
     }
 
-    public class ReturnMenu : Menu
+    public class ReturnMenu : MenuItem
     {
         public ReturnMenu(string name) : base(name) { }
     }
 
-    public class MenuCategory : Menu
+    public class MenuCategory : MenuItem
     {
-        public Menu[] Items { get; }
+        public MenuItem[] Items { get; }
 
-        public MenuCategory(string name, Menu[] items) : base(name)
+        public MenuCategory(string name, MenuItem[] items) : base(name)
         {
             Items = items;
         }
     }
 
-    public class MenuAction : Menu
+    public class MenuAction : MenuItem
     {
-        public Action<Menu> Action { get; }
+        public Action<MenuItem> Action { get; }
 
-        public MenuAction(string name, Action<Menu> action) : base(name)
+        public MenuAction(string name, Action<MenuItem> action) : base(name)
         {
             Action = action;
         }
     }
 
-    public class MenuApplicationStackPush : Menu
+    public class MenuApplicationStackPush : MenuItem
     {
         public Action Action { get; }
 

@@ -4,11 +4,13 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
     public class MainMenu
     {
-        public static MenuCategory mainMenu = new MenuCategory("Главное меню", new Menu[]
+        static DynamicStructure.Core.Stack.Stack<string> stack = new DynamicStructure.Core.Stack.Stack<string>();
+
+        public static MenuCategory mainMenu = new MenuCategory("Главное меню", new MenuItem[]
             {
-                new MenuCategory("Stack",new Menu[]
+                new MenuCategory("Stack",new MenuItem[]
                 {
-                 //   new MenuApplicationStackPush("Положить данные в стек"),
+                    new MenuApplicationStackPush("Положить данные в стек",stack.Push),
                     new ReturnMenu("Вернуться назад")
                 }),
                 new ReturnMenu("Выход")
