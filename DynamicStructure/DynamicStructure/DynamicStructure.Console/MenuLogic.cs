@@ -42,7 +42,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 wayBack.Push(_current);
                                 index = 0;
                                 _current = category;
-                                ConsoleHelper.CleanScreen();
+                                ConsoleHelper.ClearScreen();
                                 break;
                             case MenuApplicationStackPush executeAction:
                                 executeAction.Action();
@@ -52,7 +52,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 action.Action(action);
                                 return;
                             case ReturnMenu back:
-                                ConsoleHelper.CleanScreen();
+                                ConsoleHelper.ClearScreen();
                                 if (back.Name == "Выход")
                                 {
                                     System.Console.WriteLine("Вы вышли из приложения.");
@@ -87,7 +87,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                     Environment.Exit(0);
             } while (true);
 
-            ConsoleHelper.CleanScreen();
+            ConsoleHelper.ClearScreen();
 
             DrawMenu(0, 0, index);
         }

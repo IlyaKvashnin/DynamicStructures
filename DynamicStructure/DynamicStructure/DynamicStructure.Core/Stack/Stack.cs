@@ -15,8 +15,8 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
         public void Push(T value)
         {
             tail = new ListNode<T>(value, tail);
+
             Count++;
-            Console.WriteLine($"Pushed {value}");
         }
         public T Pop()
         {
@@ -25,7 +25,6 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             var node = tail;
             tail = tail.Next;
             Count--;
-            Console.WriteLine($"Poped {node.Item}");
             return node.Item;
         }
     }

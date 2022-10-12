@@ -10,26 +10,11 @@ namespace DynamicStructure
         public static void Main(string[] args)
         {
 
-            DynamicStructure.Core.Stack.Stack<string> stack = new DynamicStructure.Core.Stack.Stack<string>();
-            for (int i = 0; i <= 5; i++)
-            {
-                var value = Console.ReadLine();
-                int num;
-                bool isNum = int.TryParse(value, out num);
-                if (isNum)
-                    stack.Push(num.ToString());
-                else
-                    stack.Push(value);
-
-            }
-
-            while (stack.Count > 0)
-            {
-                stack.Pop();
-            }
+            MenuLogic mainMenu = new MenuLogic(MainMenu.mainMenu);
+            mainMenu.Run();
 
         }
 
-        
+
     }
 }
