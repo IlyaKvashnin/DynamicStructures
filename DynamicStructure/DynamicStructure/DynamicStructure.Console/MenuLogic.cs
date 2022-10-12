@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 
 namespace DynamicStructure.DynamicStructure.ConsoleUI
 {
@@ -44,7 +45,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 _current = category;
                                 ConsoleHelper.ClearScreen();
                                 break;
-                            case MenuApplicationStackPush executeAction:
+                            case MenuApplicationStack executeAction:
                                 executeAction.Action();
                                 ReturnToMainMenu(index);
                                 break;

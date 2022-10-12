@@ -39,11 +39,11 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         }
     }
 
-    public class MenuApplicationStackPush : MenuItem
+    public class MenuApplicationStack : MenuItem
     {
         public Action Action { get; }
 
-        public MenuApplicationStackPush(string name, Action action) : base(name)
+        public MenuApplicationStack(string name, Action action) : base(name)
         {
             Action = action;
         }
