@@ -1,8 +1,8 @@
-﻿using System;
+﻿using DynamicStructure.DynamicStructure.Core.Stack;
+using System;
 using System.Collections.Generic;
 
 namespace DynamicStructure.DynamicStructure.ConsoleUI
-//осталось только переписать этот класс
 {
     public abstract class MenuItem
     {

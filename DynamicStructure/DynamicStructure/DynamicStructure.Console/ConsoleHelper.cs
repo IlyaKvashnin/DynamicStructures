@@ -19,7 +19,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
     public class ConsoleHelper
     {
         
-        public static void CleanScreen()
+        public static void ClearScreen()
         {
             for (int i = 0; i < System.Console.WindowHeight; i++)
             {
