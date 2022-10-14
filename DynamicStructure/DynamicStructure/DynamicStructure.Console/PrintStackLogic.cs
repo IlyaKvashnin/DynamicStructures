@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DynamicStructure.DynamicStructure.Core.Stack;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Drawing;
@@ -10,11 +11,11 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
 { 
     public class PrintStackLogic
     {
-        public DynamicStructure.Core.Stack.Stack<string> stack = new DynamicStructure.Core.Stack.Stack<string>();
+        public static DynamicStructure.Core.Stack.Stack<string> stack = new DynamicStructure.Core.Stack.Stack<string>();
         public void PrintStack()
         {
             ConsoleHelper.ClearScreen();
-            if (stack.Count <= 0)
+            if (stack.IsEmpty())
             {
                 Console.WriteLine("Стек пуст, нечего отображать");
                 Console.WriteLine("\n");
@@ -23,14 +24,11 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             else
             {
                 Console.WriteLine("Содержимое стека :");
-                foreach (var item in stack)
-                {
-                    Console.WriteLine(item);
-                }
+                stack.Print();
                 Console.WriteLine("\n");
             }
         }
-        public void PushItem()
+        public void PrintPush()
         {
             ConsoleHelper.ClearScreen();
             PrintStack();
@@ -45,18 +43,39 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine($"Добавлено значение: {value}");
         }
 
-        public void PopItem()
+        public void PrintPop()
         {
             ConsoleHelper.ClearScreen();
-            var value = stack.Pop();
-            Console.WriteLine($"Удалено значение: {value}");
-
-            Console.WriteLine("\n");
-            Console.WriteLine("Текущее содержимое стека :");
-            foreach (var item in stack)
+            if (!stack.IsEmpty())
             {
-                Console.WriteLine(item);
+                var value = stack.Pop();
+                Console.WriteLine($"Удалено значение: {value}");
+                Console.WriteLine("\n");
+                Console.WriteLine("Текущее содержимое стека :");
+                stack.Print();
             }
+            else
+            {
+                Console.WriteLine("Стек пуст, значение не может быть извлечено.");
+            }
+        }
+
+        public void PrintTop()
+        {
+            ConsoleHelper.ClearScreen();
+            if (!stack.IsEmpty())
+            {
+                var value = stack.Top();
+                Console.WriteLine($"Вершина стека: {value}");
+                Console.WriteLine("\n");
+                Console.WriteLine("Текущее содержимое стека :");
+                stack.Print();
+            }
+            else
+            {
+                Console.WriteLine("Стек пуст, вершину невозможно отобразить.");
+            }
+           
         }
     }
 }
