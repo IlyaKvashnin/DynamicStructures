@@ -10,8 +10,9 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             {
                 new MenuCategory("Stack",new MenuItem[]
                 {
-                    new MenuApplicationStack("Положить данные в стек",stack.PushItem),
-                    new MenuApplicationStack("Удалить данные из стека",stack.PopItem),
+                    new MenuApplicationStack("Положить данные в стек",stack.PrintPush),
+                    new MenuApplicationStack("Удалить данные из стека",stack.PrintPop),
+                    new MenuApplicationStack("Вывести вершину стека",stack.PrintTop),
                     new MenuApplicationStack("Вывести содержимое стека",stack.PrintStack),
                     new ReturnMenu("Вернуться назад")
                 }),
