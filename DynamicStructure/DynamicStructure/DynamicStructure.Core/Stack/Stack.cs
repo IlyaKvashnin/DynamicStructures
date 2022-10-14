@@ -15,8 +15,9 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
     {
         private ListNode<T> tail;
         public int Count { get; private set; }
+        public int Max { get; private set; } = 5;
 
-        T[] items = new T[0];
+        public T[] items = new T[0];
         int size;
 
         public void Push(T value)
@@ -24,6 +25,11 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             tail = new ListNode<T>(value, tail);
             initArray(value);
             Count++;
+
+            if (tail.Item.ToString().Length > Max)
+            {
+                Max = tail.Item.ToString().Length;
+            }
         }
         public T Pop()
         {
@@ -40,13 +46,6 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
         public T Top()
         {
             return tail.Item;
-        }
-        public void Print()
-        {
-            for (int i = Count - 1; i >= 0; i--)
-            {
-                Console.WriteLine(items[i]);
-            }
         }
 
         public bool IsEmpty()
