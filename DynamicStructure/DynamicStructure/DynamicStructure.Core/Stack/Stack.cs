@@ -15,9 +15,8 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
     {
         private ListNode<T> tail;
         public int Count { get; private set; }
-        public int Max { get; private set; } = 5;
 
-        public T[] items = new T[0];
+        T[] items = new T[0];
         int size;
 
         public void Push(T value)
@@ -25,21 +24,9 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             tail = new ListNode<T>(value, tail);
             initArray(value);
             Count++;
-
-            if (tail.Item.ToString().Length > Max)
-            {
-                Max = tail.Item.ToString().Length;
-            }
-
-            Console.WriteLine("Pushed " + tail.Item);
         }
         public T Pop()
         {
-            if (tail == null)
-            {
-                Console.WriteLine("Stack is empty");
-                return default(T);
-            }
             var node = tail;
             tail = tail.Next;
             Count--;
@@ -47,32 +34,18 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             size--;
             items[size] = default(T);
 
-            Console.WriteLine("Popped " + node.Item);
-
             return node.Item;
         }
         
         public T Top()
         {
-            if (tail == null)
-            {
-                Console.WriteLine("Stack is empty");
-                return default(T);
-            }
-
-            Console.WriteLine("Top is " + tail.Item);
-
             return tail.Item;
         }
-
         public void Print()
         {
-            foreach(var item in items)
+            for (int i = Count - 1; i >= 0; i--)
             {
-                if (item != null)
-                {
-                    Console.WriteLine("Print " + item);
-                }
+                Console.WriteLine(items[i]);
             }
         }
 
@@ -80,10 +53,8 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
         {
             if (Count == 0)
             {
-                Console.WriteLine("Empty");
                 return true;
             }
-            Console.WriteLine("Not empty");
             return false;
         }
 

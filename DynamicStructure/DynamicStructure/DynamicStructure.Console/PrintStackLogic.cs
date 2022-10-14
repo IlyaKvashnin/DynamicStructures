@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,16 +12,26 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
     public class PrintStackLogic
     {
         public static DynamicStructure.Core.Stack.Stack<string> stack = new DynamicStructure.Core.Stack.Stack<string>();
-      
         public void PrintStack()
         {
             ConsoleHelper.ClearScreen();
-            print();
+            if (stack.IsEmpty())
+            {
+                Console.WriteLine("Стек пуст, нечего отображать");
+                Console.WriteLine("\n");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("Содержимое стека :");
+                stack.Print();
+                Console.WriteLine("\n");
+            }
         }
         public void PrintPush()
         {
             ConsoleHelper.ClearScreen();
-            print();
+            PrintStack();
             Console.WriteLine("Введите строку или число, которое нужно положить в стек.");
             var value = Console.ReadLine();
             int num;
@@ -43,7 +52,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                 Console.WriteLine($"Удалено значение: {value}");
                 Console.WriteLine("\n");
                 Console.WriteLine("Текущее содержимое стека :");
-                print();
+                stack.Print();
             }
             else
             {
@@ -58,64 +67,15 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             {
                 var value = stack.Top();
                 Console.WriteLine($"Вершина стека: {value}");
-            Console.WriteLine("\n");
-            Console.WriteLine("Текущее содержимое стека :");
-                print();
+                Console.WriteLine("\n");
+                Console.WriteLine("Текущее содержимое стека :");
+                stack.Print();
             }
             else
             {
                 Console.WriteLine("Стек пуст, вершину невозможно отобразить.");
             }
            
-        }
-
-        private void print()
-        {
-            if (!stack.IsEmpty())
-            {
-                drawSeparator(1, '╔', '╦', '╗');
-                for (int i = -1; i < stack.Count; i++)
-                {
-                    if (i == 0)
-                    {
-                        drawSeparator(1, '╠', '╬', '╣');
-                    }
-                    for (int j = 0; j < 1; j++)
-                    {
-                        Console.Write('║');
-                        if (i == -1)
-                        {
-                            Console.Write(centerText($"Stack", stack.Max));
-                        }
-                        else
-                        {
-                            Console.Write(centerText(stack.ToArray()[i], stack.Max));
-                        }
-                    }
-                    Console.WriteLine('║');
-                }
-                drawSeparator(1, '╚', '╩', '╝');
-            }
-            else
-            {
-                drawSeparator(1, '╔', '╦', '╗');
-                Console.Write('║');
-                Console.Write(centerText($"Stack", stack.Max));
-                Console.WriteLine('║');
-                drawSeparator(1, '╚', '╩', '╝');
-            }
-        }
-        static string centerText(string text, int neededLength)
-        {
-            int missingSpace = neededLength - text.Length;
-            return string.Join("", new string(' ', (missingSpace + 1) / 2), text, new string(' ', missingSpace / 2));
-        }
-
-        static void drawSeparator(int length, char left, char middle, char right)
-        {
-            Console.Write(left);
-            Console.Write(string.Join(middle, Enumerable.Repeat(new string('═', stack.Max), length)));
-            Console.WriteLine(right);
         }
     }
 }
