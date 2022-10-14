@@ -30,9 +30,16 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             {
                 Max = tail.Item.ToString().Length;
             }
+
+            Console.WriteLine("Pushed " + tail.Item);
         }
         public T Pop()
         {
+            if (tail == null)
+            {
+                Console.WriteLine("Stack is empty");
+                return default(T);
+            }
             var node = tail;
             tail = tail.Next;
             Count--;
@@ -40,20 +47,43 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             size--;
             items[size] = default(T);
 
+            Console.WriteLine("Popped " + node.Item);
+
             return node.Item;
         }
         
         public T Top()
         {
+            if (tail == null)
+            {
+                Console.WriteLine("Stack is empty");
+                return default(T);
+            }
+
+            Console.WriteLine("Top is " + tail.Item);
+
             return tail.Item;
+        }
+
+        public void Print()
+        {
+            foreach(var item in items)
+            {
+                if (item != null)
+                {
+                    Console.WriteLine("Print " + item);
+                }
+            }
         }
 
         public bool IsEmpty()
         {
             if (Count == 0)
             {
+                Console.WriteLine("Empty");
                 return true;
             }
+            Console.WriteLine("Not empty");
             return false;
         }
 
