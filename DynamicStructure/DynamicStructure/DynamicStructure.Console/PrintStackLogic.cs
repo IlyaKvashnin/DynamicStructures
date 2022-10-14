@@ -48,8 +48,8 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             ConsoleHelper.ClearScreen();
             if (!stack.IsEmpty())
             {
-                var value = stack.Pop();
-                Console.WriteLine($"Удалено значение: {value}");
+            var value = stack.Pop();
+            Console.WriteLine($"Удалено значение: {value}");
                 Console.WriteLine("\n");
                 Console.WriteLine("Текущее содержимое стека :");
                 stack.Print();
@@ -67,8 +67,8 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             {
                 var value = stack.Top();
                 Console.WriteLine($"Вершина стека: {value}");
-                Console.WriteLine("\n");
-                Console.WriteLine("Текущее содержимое стека :");
+            Console.WriteLine("\n");
+            Console.WriteLine("Текущее содержимое стека :");
                 stack.Print();
             }
             else
