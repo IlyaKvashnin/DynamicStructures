@@ -1,6 +1,6 @@
 ﻿using DynamicStructure.DynamicStructure.ConsoleUI;
+using DynamicStructure.DynamicStructure.Core.Queue;
 using System;
-using System.Collections.Generic;
 
 namespace DynamicStructure
 {
@@ -11,9 +11,10 @@ namespace DynamicStructure
 
             MenuLogic mainMenu = new MenuLogic(MainMenu.mainMenu);
             mainMenu.Run();
+           
         }
 
-        
+
 
     }
 }
