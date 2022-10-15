@@ -18,28 +18,15 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
         private int count;
 
         #endregion
-
-        /// <summary>
-        /// Property to hold first node in the list
-        /// </summary>
         public ListNode<T> FirstNode
         {
             get { return firstNode; }
         }
-
-        /// <summary>
-        /// Property to hold last node in the list
-        /// </summary>
         public ListNode<T> LastNode
         {
             get { return lastNode; }
         }
 
-        /// <summary>
-        /// Indexer to iterate through the list and fetch the item
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
         public T this[int index]
         {
             get
@@ -57,18 +44,11 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
                 return currentNode.Item;
             }
         }
-
-        /// <summary>
-        /// Property to hold count of items in the list
-        /// </summary>
         public int Count
         {
             get { return count; }
         }
 
-        /// <summary>
-        /// Property to determine if the list is empty or contains any item
-        /// </summary>
         public bool IsEmpty
         {
             get
@@ -80,10 +60,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
         }
 
-        /// <summary>
-        /// Constructor initializing list with a provided list name
-        /// </summary>
-        /// <param name="strListName"></param>
         public SinglyLinkedList(string strListName)
         {
             this.strListName = strListName;
@@ -91,15 +67,8 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             firstNode = lastNode = null;
         }
 
-        /// <summary>
-        /// default constructor initializing list with a default name 'MyList'
-        /// </summary>
         public SinglyLinkedList() : this("MyList") { }
 
-        /// <summary>
-        /// Operation inserts item at the front of the list
-        /// </summary>
-        /// <param name="item"></param>
         public void InsertAtFront(T item)
         {
             lock (this)
@@ -112,10 +81,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
         }
 
-        /// <summary>
-        /// Operation inserts item at the back of the list
-        /// </summary>
-        /// <param name="item"></param>
         public void InsertAtBack(T item)
         {
             lock (this)
@@ -128,10 +93,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
         }
 
-        /// <summary>
-        /// Operation removes item from the front of the list
-        /// </summary>
-        /// <returns></returns>
         public object RemoveFromFront()
         {
             lock (this)
@@ -147,11 +108,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
                 return removedData;
             }
         }
-
-        /// <summary>
-        /// Operation removes item from the back of the list
-        /// </summary>
-        /// <returns></returns>
         public object RemoveFromBack()
         {
             lock (this)
@@ -174,11 +130,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
         }
 
-        /// <summary>
-        /// Operation inserts item at the specified index in the list
-        /// </summary>
-        /// <param name="index"></param>
-        /// <param name="item"></param>
         public void InsertAt(int index, T item)
         {
             lock (this)
@@ -202,12 +153,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
                 }
             }
         }
-
-        /// <summary>
-        /// Operation removes item from the specified index in the list
-        /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
         public object RemoveAt(int index)
         {
             lock (this)
@@ -233,13 +178,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
                 return removedData;
             }
         }
-
-        /// <summary>
-        /// Operation updates an item provided as an input with a new item (also provided as an input)
-        /// </summary>
-        /// <param name="oldItem"></param>
-        /// <param name="newItem"></param>
-        /// <returns></returns>
         public bool Update(T oldItem, T newItem)
         {
             lock (this)
@@ -257,19 +195,12 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
                 return false;
             }
         }
-
-        /// <summary>
-        /// Operation resets the list and clears all its contents
-        /// </summary>
         public void Clear()
         {
             firstNode = lastNode = null;
             count = 0;
         }
 
-        /// <summary>
-        /// Operation to reverse the contents of the linked list by resetting the pointers and swapping the contents
-        /// </summary>
         public void Reverse()
         {
             if (firstNode == null || firstNode.Next == null)
@@ -293,11 +224,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
 
             firstNode = currentNode;
         }
-
-        /// <summary>
-        /// Operation to get contents from the list. This has been duplicated as a simplification when I overridden ToString for the list
-        /// </summary>
-        /// <returns></returns>
         public string GetListContents()
         {
             string strListItems = String.Empty;
@@ -427,11 +353,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
         }
 
         #endregion
-
-        /// <summary>
-        /// Operation ToString overridden to get the contents from the list
-        /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             if (IsEmpty)
@@ -446,10 +367,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             return returnString.ToString();
         }
 
-        /// <summary>
-        /// Operation to find if the linked list contains a circular loop
-        /// </summary>
-        /// <returns></returns>
         public bool HasCycle()
         {
             ListNode<T> currentNode = firstNode;
@@ -463,11 +380,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
             return false;
         }
-
-        /// <summary>
-        /// Operation to find the midpoint of a list 
-        /// </summary>
-        /// <returns></returns>
         public ListNode<T> GetMiddleItem()
         {
             ListNode<T> currentNode = firstNode;
@@ -481,10 +393,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             }
             return firstNode;
         }
-
-        /// <summary>
-        /// Operation creates a circular loop in the linked list for testing purpose. Once this loop is created, other operations would probably fail.
-        /// </summary>
         public void CreateCycleInListToTest()
         {
             ListNode<T> currentNode = firstNode;

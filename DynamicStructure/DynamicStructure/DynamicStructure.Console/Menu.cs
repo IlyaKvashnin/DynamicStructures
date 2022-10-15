@@ -48,4 +48,14 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Action = action;
         }
     }
+
+    public class MenuApplicationMeasurements : MenuItem
+    {
+        public Action Action { get; }
+
+        public MenuApplicationMeasurements(string name, Action action) : base(name)
+        {
+            Action = action;
+        }
+    }
 }
