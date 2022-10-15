@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DynamicStructure.DynamicStructure.Test
+namespace DynamicStructure.DynamicStructure.FileWorker
 {
     internal class FileGenerator
     {
@@ -17,7 +18,7 @@ namespace DynamicStructure.DynamicStructure.Test
         /// <param name="countNumbers">Количество чисел, которые будут сгенерированы</param>
         /// <param name="maxNumber">Предельное число для рандомайзера</param>
         /// <returns></returns>
-        private string[] generatePushData(int countWords,int lengthLetters, int countNumbers, int maxNumber)
+        private string[] generateMeasurementsData(BigInteger countWords, BigInteger lengthLetters, BigInteger countNumbers, BigInteger maxNumber)
         {
             StringBuilder strItems = new StringBuilder();
             // Создаем массив букв, которые мы будем использовать.
@@ -47,7 +48,7 @@ namespace DynamicStructure.DynamicStructure.Test
 
             for (int i = 0; i < countNumbers; i++)
             {
-                strItems.Append(rand.Next(0,maxNumber).ToString());
+                strItems.Append(rand.Next(0,((int)maxNumber)).ToString());
                 if ((i != countNumbers - 1))
                 {
                     strItems.Append(" ");
@@ -58,17 +59,17 @@ namespace DynamicStructure.DynamicStructure.Test
             return strItems.ToString().Split(" ");
         }
 
-        public StringBuilder GenerateFile(int countOperation)
+        public StringBuilder GenerateFile(BigInteger countOperation)
         {
             StringBuilder sb = new StringBuilder();
 
             Random rand = new Random();
 
-            string[] data = generatePushData((int)(countOperation / 1.5), 10, countOperation, 999); ;
+            string[] data = generateMeasurementsData(countOperation - (countOperation / 2), 10, countOperation, 999); ;
 
             for (int i = 0; i < countOperation; i++)
             {
-                int value = rand.Next(1, 5);
+                int value = rand.Next(1, 6);
                 if (value == 1)
                 {
                     sb.Append("1,");

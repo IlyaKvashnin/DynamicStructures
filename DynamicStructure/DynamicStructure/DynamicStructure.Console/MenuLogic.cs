@@ -45,8 +45,12 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 _current = category;
                                 ConsoleHelper.ClearScreen();
                                 break;
-                            case MenuApplicationStack executeAction:
-                                executeAction.Action();
+                            case MenuApplicationStack execute:
+                                execute.Action();
+                                ReturnToMainMenu(index);
+                                break;
+                            case MenuApplicationMeasurements execute:
+                                execute.Action();
                                 ReturnToMainMenu(index);
                                 break;
                             case MenuAction action:

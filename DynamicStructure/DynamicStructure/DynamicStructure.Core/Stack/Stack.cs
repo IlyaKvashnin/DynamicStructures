@@ -14,40 +14,40 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
     public class Stack<T> : IEnumerable<T>
     {
         private ListNode<T> tail;
-        public int Count { get; private set; }
-        public int Max { get; private set; } = 5;
+        public int CountItems { get; private set; }
+        public int MaxLengthItems { get; private set; } = 5;
 
-        public T[] items = new T[0];
+        public T[] stackItems = new T[0];
+
         int size;
 
         public void Push(T value)
         {
             tail = new ListNode<T>(value, tail);
             initArray(value);
-            Count++;
+            CountItems++;
 
-            if (tail.Item.ToString().Length > Max)
+            if (tail.Item.ToString().Length > MaxLengthItems)
             {
-                Max = tail.Item.ToString().Length;
+                MaxLengthItems = tail.Item.ToString().Length;
             }
 
-            Console.WriteLine("Pushed " + tail.Item);
+            //Console.WriteLine("Pushed " + tail.Item);
         }
         public T Pop()
         {
             if (tail == null)
             {
-                Console.WriteLine("Stack is empty");
+                //Console.WriteLine("Stack is empty");
                 return default(T);
             }
             var node = tail;
             tail = tail.Next;
-            Count--;
+            CountItems--;
 
             size--;
-            items[size] = default(T);
-
-            Console.WriteLine("Popped " + node.Item);
+            stackItems[size] = default(T); 
+            //Console.WriteLine("Popped " + node.Item);
 
             return node.Item;
         }
@@ -56,55 +56,55 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
         {
             if (tail == null)
             {
-                Console.WriteLine("Stack is empty");
+                //Console.WriteLine("Stack is empty");
                 return default(T);
             }
 
-            Console.WriteLine("Top is " + tail.Item);
+            //Console.WriteLine("Top is " + tail.Item);
 
             return tail.Item;
         }
 
         public void Print()
         {
-            foreach(var item in items)
+            foreach(var item in stackItems)
             {
                 if (item != null)
                 {
-                    Console.WriteLine("Print " + item);
+                    //Console.WriteLine("Print " + item);
                 }
             }
         }
 
         public bool IsEmpty()
         {
-            if (Count == 0)
+            if (CountItems == 0)
             {
-                Console.WriteLine("Empty");
+                //Console.WriteLine("Empty");
                 return true;
             }
-            Console.WriteLine("Not empty");
+            //Console.WriteLine("Not empty");
             return false;
         }
 
         private void initArray(T value)
         {
-            if (size == items.Count())
+            if (size == stackItems.Count())
             {
                 int newlength = size == 0 ? 4 : size * 2;
                 T[] newarray = new T[newlength]; // array with new size   
-                items.CopyTo(newarray, 0);
-                items = newarray;
+                stackItems.CopyTo(newarray, 0);
+                stackItems = newarray;
             }
-            items[size] = value;
+            stackItems[size] = value;
             size++;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = Count - 1; i >= 0; i--)
+            for (int i = CountItems - 1; i >= 0; i--)
             {
-                yield return items[i];
+                yield return stackItems[i];
             }
         }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
