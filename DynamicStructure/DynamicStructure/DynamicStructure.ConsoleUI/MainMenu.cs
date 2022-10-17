@@ -18,6 +18,12 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                     new MenuApplicationMeasurements("Тестирование",methods.ExecuteMeasurements),
                     new ReturnMenu("Вернуться назад")
                 }),
+                new MenuCategory("Работа с постфиксной записью", new MenuItem[]
+                {
+                    new MenuApplicationPostfixNotation("Вычислить постфиксное выражение, введенное с клавиатуры", PostfixNotationLogic.CalculatePostfixNotation),
+                    new MenuApplicationPostfixNotation("Вычислить выражение из файла", PostfixNotationLogic.CalculatePostfixNotationFromFile),
+                    new MenuApplicationPostfixNotation("Вычислить инфиксное выражение с переводом в постфиксную",PostfixNotationLogic.CalculateInfixNotation),
+                }),
                 new ReturnMenu("Выход")
             });
     }

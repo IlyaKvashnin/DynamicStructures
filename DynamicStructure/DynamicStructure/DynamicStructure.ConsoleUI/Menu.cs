@@ -58,4 +58,14 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Action = action;
         }
     }
+
+    public class MenuApplicationPostfixNotation : MenuItem
+    {
+        public Action Action { get; }
+
+        public MenuApplicationPostfixNotation(string name, Action action) : base(name)
+        {
+            Action = action;
+        }
+    }
 }

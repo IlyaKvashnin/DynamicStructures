@@ -65,7 +65,7 @@ namespace DynamicStructure.DynamicStructure.FileWorker
 
             Random rand = new Random();
 
-            string[] data = generateMeasurementsData(countOperation - (countOperation / 2), 10, countOperation, 999); ;
+            string[] data = generateMeasurementsData(countOperation - (countOperation / 2), 10, countOperation, 999);
 
             for (int i = 0; i < countOperation; i++)
             {
