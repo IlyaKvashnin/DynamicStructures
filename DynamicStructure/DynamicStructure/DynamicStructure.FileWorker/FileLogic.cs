@@ -9,9 +9,9 @@ namespace DynamicStructure.DynamicStructure.FileWorker
 {
     public class FileLogic
     {
-        public const string PathToGeneratedData = "../../../DynamicStructure.FileWorker/stack100kk.txt";
-        public const string PathToTimeFile = "../../../DynamicStructure.FileWorker/stack_time10kk.txt";
-        public const string PathToMemoryFile = "../../../DynamicStructure.FileWorker/stack_memory50k.txt";
+        public const string PathToGeneratedData = "../../../DynamicStructure.FileWorker/stack115kk.txt";
+        public const string PathToTimeFile = "../../../DynamicStructure.FileWorker/stack_time115kk.txt";
+        public const string PathToMemoryFile = "../../../DynamicStructure.FileWorker/stack_memory115kk.txt";
 
         public static string[] ReadFile(string pathToFile)
         {

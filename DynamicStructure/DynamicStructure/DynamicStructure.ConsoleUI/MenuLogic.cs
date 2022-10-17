@@ -53,6 +53,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 execute.Action();
                                 ReturnToMainMenu(index);
                                 break;
+                            case MenuApplicationPostfixNotation execute:
+                                execute.Action();
+                                ReturnToMainMenu(index);
+                                break;
                             case MenuAction action:
                                 action.Action(action);
                                 return;

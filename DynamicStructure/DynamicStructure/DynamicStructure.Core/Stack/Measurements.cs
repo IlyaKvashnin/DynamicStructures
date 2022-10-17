@@ -35,7 +35,7 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
                 for (int i = 0; i < items.Count(); i++)
                 {
 
-                    if (i / 500 == 0)
+                    if (i % 2000000 == 0)
                     {
                         outputDataTime.Add(stopwatch.Elapsed.TotalMilliseconds.ToString());
                         outputDataMemory.Add(ramCounter.RawValue.ToString());
