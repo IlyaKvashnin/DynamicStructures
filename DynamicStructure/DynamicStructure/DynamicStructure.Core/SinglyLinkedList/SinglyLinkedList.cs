@@ -491,6 +491,7 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             ListNode<T> midNode = GetMiddleItem();
             lastNode.Next = midNode;
         }
+        
     }
 
 }
