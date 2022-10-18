@@ -3,9 +3,9 @@
 class PostfixNotation
 {
 
-    static public double Calculate(string input)//"входной" метод класса
+    static public double Calculate(string v)//"входной" метод класса
     {
-
+        string input = сonvertString(v);
         string output = GetExpression(input);//преобразование выражения в постфиксную запись
         double result = Counting(output);//решение выражения
         return result;
@@ -14,8 +14,9 @@ class PostfixNotation
 
 
 
-    static public string GetExpression(string input)//метод перевода выражения в постфиксную запись
+    static public string GetExpression(string v)//метод перевода выражения в постфиксную запись
     {
+        string input = сonvertString(v);
         string output = string.Empty; //Строка для хранения выражения
         //Stack<char> operStack = new Stack<char>(); //Стек для хранения операторов
         DynamicStructure.DynamicStructure.Core.Stack.Stack<string> operStack = new DynamicStructure.DynamicStructure.Core.Stack.Stack<string>();
@@ -71,6 +72,7 @@ class PostfixNotation
                         s = operStack.Pop();
                     }
                 }
+               
                 else //Если любой другой оператор
                 {
                     if (operStack.Count() > 0) //Если в стеке есть элементы
@@ -91,8 +93,9 @@ class PostfixNotation
 
     }
 
-    static public double Counting(string output)//метод решения OPN
+    static public double Counting(string v)//метод решения OPN
     {
+        string output = сonvertString(v);
         string result;
 
         string[] mas = output.Split(' ');
@@ -111,7 +114,7 @@ class PostfixNotation
                     break;
 
 
-                case "sqrt"://далее все аналогично
+                case "√"://далее все аналогично
                     result = Math.Sqrt(double.Parse(mas[i - 1])).ToString();
                     mas[i - 1] = result;
                     for (int j = i; j < mas.Length - 1; j++)
@@ -120,7 +123,7 @@ class PostfixNotation
                     i -= 1;
                     break;
 
-                case "sin"://далее все аналогично
+                case "s"://далее все аналогично
                     result = Math.Sin(double.Parse(mas[i - 1])).ToString();
                     mas[i - 1] = result;
                     for (int j = i; j < mas.Length - 1; j++)
@@ -129,7 +132,7 @@ class PostfixNotation
                     i -= 1;
                     break;
 
-                case "cos"://далее все аналогично
+                case "c"://далее все аналогично
                     result = Math.Cos(double.Parse(mas[i - 1])).ToString();
                     mas[i - 1] = result;
                     for (int j = i; j < mas.Length - 1; j++)
@@ -138,7 +141,7 @@ class PostfixNotation
                     i -= 1;
                     break;
 
-                case "log":
+                case "l":
                     result = (Math.Log(double.Parse(mas[i - 2]), double.Parse(mas[i - 1]))).ToString();
                     mas[i - 2] = result;
                     for (int j = i - 1; j < mas.Length - 2; j++)
@@ -199,10 +202,10 @@ class PostfixNotation
     {
         switch (s)
         {
-            case "sqrt": return 0;
-            case "sin": return 1;
-            case "cos": return 2;
-            case "log": return 3;
+            case "√": return 0;
+            case "s": return 1;
+            case "c": return 2;
+            case "l": return 3;
             case "(": return 4;
             case ")": return 5;
             case "+": return 6;
@@ -223,10 +226,10 @@ class PostfixNotation
 
     static private bool IsFunction(string с)
     {
-        if (("sqrt".IndexOf(с) != -1)) return true;
-        if (("sin".IndexOf(с) != -1)) return true;
-        if (("cos".IndexOf(с) != -1)) return true;
-        if (("log".IndexOf(с) != -1)) return true;
+        if (("√".IndexOf(с) != -1)) return true;
+        if (("s".IndexOf(с) != -1)) return true;
+        if (("c".IndexOf(с) != -1)) return true;
+        if (("l".IndexOf(с) != -1)) return true;
         return false;
     }
 
@@ -236,5 +239,34 @@ class PostfixNotation
         if ((" =".IndexOf(c) != -1))
             return true;
         return false;
+    }
+
+    static private string сonvertString(string str)
+    {
+        string newString = "";
+
+        foreach(var c in str.Split(" ")){
+            switch (c)
+            {
+                case "log":
+                    newString += "l ";
+                    break;
+                case "sin":
+                    newString += "s ";
+                    break;
+                case "cos":
+                    newString += "c ";
+                    break;
+                case "sqrt":
+                    newString += "√ ";
+                    break;
+                default:
+                    newString += c + " ";
+                    break;
+
+            }
+        }
+
+        return newString;
     }
 }

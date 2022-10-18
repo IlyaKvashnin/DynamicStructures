@@ -106,9 +106,9 @@ public class ShortestPathFinder
                         
                     }
 
-                    for (int j = 0; j <= stack.Count; j++)
+                    for (int j = 0; j <= stack.Count(); j++)
                     {
-                        if (j == stack.Count)
+                        if (j == stack.Count())
                             Console.Write($"{i + 1} | Мин.Расстояние: {dist[i]}");
                         else
                         {

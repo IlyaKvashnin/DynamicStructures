@@ -14,7 +14,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         {
             ConsoleHelper.ClearScreen();
             Console.WriteLine("Введите выражение в постфиксной записи: ");
-            Console.WriteLine(PostfixNotation.Counting(Console.ReadLine()));
+            Console.WriteLine($"Результат вычисления: {PostfixNotation.Counting(Console.ReadLine())}");
         }
 
         public static void CalculatePostfixNotationFromFile()
