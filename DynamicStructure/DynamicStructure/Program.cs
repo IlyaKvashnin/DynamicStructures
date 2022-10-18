@@ -1,5 +1,4 @@
 ﻿using DynamicStructure.DynamicStructure.ConsoleUI;
-using DynamicStructure.DynamicStructure.Core.Queue;
 using System;
 
 namespace DynamicStructure
