@@ -77,4 +77,23 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Action = action;
         }
     }
+
+    public class MenuApplicationDynamicStructures : MenuItem
+    {
+        public Action Action { get; }
+
+        public MenuApplicationDynamicStructures(string name, Action action) : base(name)
+        {
+            Action = action;
+        }
+    }
+    public class MenuApplicationList : MenuItem
+    {
+        public Action Action { get; }
+
+        public MenuApplicationList(string name, Action action) : base(name)
+        {
+            Action = action;
+        }
+    }
 }

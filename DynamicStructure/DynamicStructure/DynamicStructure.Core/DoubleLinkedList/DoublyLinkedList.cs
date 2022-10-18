@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using DynamicStructure.DynamicStructure.ConsoleUI;
 using DynamicStructure.DynamicStructure.Core.SinglyLinkedList;
+using DynamicStructure.DynamicStructure.Core.Third;
 
 namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
 {
@@ -195,21 +197,6 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             else return true;
         }
 
-        public void Reverse()
-        {
-            DoublyListNode<T>? temp = Head;
-            DoublyListNode<T>? node = temp.Next;
-            temp.Next = null;
-            temp.Previous = node;
-            while (node != null)
-            {
-                node.Previous = node.Next;
-                node.Next = temp;
-                temp = node;
-                node = node.Previous;
-                Head = temp;
-            }
-        }
         public void Sort()
         {
             for (DoublyListNode<T>? current = Head; current.Next != null; current = current.Next)
@@ -268,5 +255,148 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             temp.Previous = node;
             
         }
+
+        public void Reverse()
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyListNode<T>? node = temp.Next;
+            temp.Next = null;
+            temp.Previous = node;
+            while (node != null)
+            {
+                node.Previous = node.Next;
+                node.Next = temp;
+                temp = node;
+                node = node.Previous;
+                Head = temp;
+            }
+        }
+
+        public int CountDistinctElements()
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
+            while (temp != null)
+            {
+                list.Add(temp.Data);
+                temp = temp.Next;
+            }
+            int count = 0;
+            foreach(T item in list)
+            {
+                list.Remove(item);
+                if (list.Contains(item)) continue;
+                else
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public DoublyLinkedList<T> InsertListAfterX(T x)
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
+            DoublyLinkedList<T> list2 = new DoublyLinkedList<T>();
+            while (temp != null)
+            {
+                list.Add(temp.Data);
+                temp = temp.Next;
+            }
+            foreach (var item in list)
+            {
+                list2.Add(item);
+                if (EqualityComparer<T>.Default.Equals(item, x))
+                {
+                    break;
+                }
+            }
+            list2.AddCollection(list);
+            return list2;
+        }
+        public DoublyLinkedList<T> DeleteDublicate()
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
+            while (temp != null)
+            {
+                if (list.Contains(temp.Data))
+                {
+                    temp = temp.Next;
+                }
+                else
+                {
+                    list.Add(temp.Data);
+                    temp = temp.Next;
+                }
+            }
+            return list;
+        }
+        public void DeleteAllItemsE(T e)
+        {
+            DoublyListNode<T>? temp = Head;
+            while (temp != null)
+            {
+                if(EqualityComparer<T>.Default.Equals(temp.Data, e))
+                {
+                    Remove(temp.Data);
+                }
+                temp = temp.Next;
+            }
+
+        }
+
+        public DoublyLinkedList<int> InsertListToList(string path)
+        {
+            var file = File.ReadAllLines(path);
+            var list1 = new DoublyLinkedList<int>();
+            var list2 = new DoublyLinkedList<int>();
+            for (int i = 0; i < file.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    for (int j = 0; j < file[i].Split(" ").Length; j++)
+                    {
+                        list1.Add(int.Parse(file[i].Split(" ")[j]));
+                    }        
+                }
+                else
+                {
+                    for (int j = 0; j < file[i].Split(" ").Length; j++)
+                    {
+                        list2.Add(int.Parse(file[i].Split(" ")[j]));
+                    }
+                }
+            }
+            return list1.AddCollection(list2);
+        }
+
+        public DoublyLinkedList<T> DoubledList()
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
+            DoublyLinkedList<T> list2 = new DoublyLinkedList<T>();
+            while (temp != null)
+            {
+                list.Add(temp.Data);
+                temp = temp.Next;
+            }
+            foreach (var item in list)
+            {
+                list2.Add(item);
+            }
+            list.AddCollection(list2);
+            return list;
+        }
+
+        public static void OrderedInsert(DoublyLinkedList<T> linkedList, T newElem)
+        {
+            linkedList.Add(newElem);
+            linkedList.Sort();
+
+        }
+
+       
     }
 }
