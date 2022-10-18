@@ -30,6 +30,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                 }
                 Console.WriteLine($"Строка, содержащаяся в файле : {str}");
                 Console.WriteLine($"Результат : {PostfixNotation.Counting(str)}");
+                Console.WriteLine("\n");
                 str = "";
             }
             

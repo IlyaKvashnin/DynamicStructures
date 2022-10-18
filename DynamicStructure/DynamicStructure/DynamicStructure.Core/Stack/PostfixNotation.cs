@@ -129,6 +129,24 @@ class PostfixNotation
                     i -= 1;
                     break;
 
+                case "cos"://далее все аналогично
+                    result = Math.Cos(double.Parse(mas[i - 1])).ToString();
+                    mas[i - 1] = result;
+                    for (int j = i; j < mas.Length - 1; j++)
+                        mas[j] = mas[j + 1];
+                    Array.Resize(ref mas, mas.Length - 1);
+                    i -= 1;
+                    break;
+
+                case "log":
+                    result = (Math.Log(double.Parse(mas[i - 2]), double.Parse(mas[i - 1]))).ToString();
+                    mas[i - 2] = result;
+                    for (int j = i - 1; j < mas.Length - 2; j++)
+                        mas[j] = mas[j + 2];
+                    Array.Resize(ref mas, mas.Length - 2);
+                    i -= 2;
+                    break;
+
                 case "-"://далее все аналогично
                     result = (double.Parse(mas[i - 2]) - double.Parse(mas[i - 1])).ToString();
                     mas[i - 2] = result;
@@ -182,15 +200,17 @@ class PostfixNotation
         switch (s)
         {
             case "sqrt": return 0;
-            case "sin": return 0;
-            case "(": return 1;
-            case ")": return 2;
-            case "+": return 3;
-            case "-": return 4;
-            case "*": return 5;
-            case "/": return 6;
-            case "^": return 7;
-            default: return 8;
+            case "sin": return 1;
+            case "cos": return 2;
+            case "log": return 3;
+            case "(": return 4;
+            case ")": return 5;
+            case "+": return 6;
+            case "-": return 7;
+            case "*": return 8;
+            case "/": return 9;
+            case "^": return 10;
+            default: return 11;
         }
     }
     //Метод возвращает true, если проверяемый символ - оператор
@@ -203,10 +223,10 @@ class PostfixNotation
 
     static private bool IsFunction(string с)
     {
-        if (("sqrt".IndexOf(с) != -1))
-            return true;
-        if (("sin".IndexOf(с) != -1))
-            return true;
+        if (("sqrt".IndexOf(с) != -1)) return true;
+        if (("sin".IndexOf(с) != -1)) return true;
+        if (("cos".IndexOf(с) != -1)) return true;
+        if (("log".IndexOf(с) != -1)) return true;
         return false;
     }
 

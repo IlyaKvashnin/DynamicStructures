@@ -23,6 +23,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                     new MenuApplicationPostfixNotation("Вычислить постфиксное выражение, введенное с клавиатуры", PostfixNotationLogic.CalculatePostfixNotation),
                     new MenuApplicationPostfixNotation("Вычислить выражение из файла", PostfixNotationLogic.CalculatePostfixNotationFromFile),
                     new MenuApplicationPostfixNotation("Вычислить инфиксное выражение с переводом в постфиксную",PostfixNotationLogic.CalculateInfixNotation),
+                    new ReturnMenu("Вернуться назад"),
                 }),
                 new ReturnMenu("Выход")
             });
