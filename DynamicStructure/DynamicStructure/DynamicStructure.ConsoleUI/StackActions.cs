@@ -31,28 +31,28 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             {
                 Console.WriteLine("Содержимое стека :");
 
-                drawSeparator(1, '╔', '╦', '╗');
+                ConsoleHelper.DrawSeparator(stack.MaxLengthItems,1, '╔', '╦', '╗');
                 for (int i = stack.Count(); i >= 0; i--)
                 {
                     if (i == stack.Count() - 1)
                     {
-                        drawSeparator(1, '╠', '╬', '╣');
+                        ConsoleHelper.DrawSeparator(stack.MaxLengthItems,1, '╠', '╬', '╣');
                     }
                     for (int j = 0; j < 1; j++)
                     {
                         Console.Write('║');
                         if (i == stack.Count())
                         {
-                            Console.Write(centerText($"Stack", stack.MaxLengthItems));
+                            Console.Write(ConsoleHelper.CenterText($"Stack", stack.MaxLengthItems));
                         }
                         else
                         {
-                            Console.Write(centerText(stack.stackItems[i], stack.MaxLengthItems));
+                            Console.Write(ConsoleHelper.CenterText(stack.stackItems[i], stack.MaxLengthItems));
                         }
                     }
                     Console.WriteLine('║');
                 }
-                drawSeparator(1, '╚', '╩', '╝');
+                ConsoleHelper.DrawSeparator(stack.MaxLengthItems,1, '╚', '╩', '╝');
 
                 Console.WriteLine("\n");
             }
@@ -136,19 +136,6 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine("Стек работает, ждите");
             Measurements measurements = new Measurements();
             measurements.ExecuteMeasurements(FileLogic.PathToGeneratedData, FileLogic.PathToMemoryFile, FileLogic.PathToTimeFile);
-        }
-
-        static string centerText(string text, int neededLength)
-        {
-            int missingSpace = neededLength - text.Length;
-            return string.Join("", new string(' ', (missingSpace + 1) / 2), text, new string(' ', missingSpace / 2));
-        }
-
-        static void drawSeparator(int length, char left, char middle, char right)
-        {
-            Console.Write(left);
-            Console.Write(string.Join(middle, Enumerable.Repeat(new string('═', stack.MaxLengthItems), length)));
-            Console.WriteLine(right);
         }
     }
 }

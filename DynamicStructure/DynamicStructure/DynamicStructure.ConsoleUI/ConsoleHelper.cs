@@ -18,7 +18,18 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
     }
     public class ConsoleHelper
     {
-        
+        public static string CenterText(string text, int neededLength)
+        {
+            int missingSpace = neededLength - text.Length;
+            return string.Join("", new string(' ', (missingSpace + 1) / 2), text, new string(' ', missingSpace / 2));
+        }
+
+        public static void DrawSeparator(int maxLength,int length, char left, char middle, char right)
+        {
+            Console.Write(left);
+            Console.Write(string.Join(middle, Enumerable.Repeat(new string('═', maxLength), length)));
+            Console.WriteLine(right);
+        }
         public static void ClearScreen()
         {
             for (int i = 0; i < System.Console.WindowHeight; i++)

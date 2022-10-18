@@ -57,6 +57,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                                 execute.Action();
                                 ReturnToMainMenu(index);
                                 break;
+                            case MenuApplicationQueue execute:
+                                execute.Action();
+                                ReturnToMainMenu(index);
+                                break;
                             case MenuAction action:
                                 action.Action(action);
                                 return;

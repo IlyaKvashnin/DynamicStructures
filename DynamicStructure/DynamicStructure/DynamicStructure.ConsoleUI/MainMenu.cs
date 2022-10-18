@@ -11,12 +11,20 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                 new MenuCategory("Stack",new MenuItem[]
                 {
                     new MenuApplicationStack("Положить данные в стек",methods.PrintPush),
-                    new MenuApplicationStack("Удалить данные из стека",methods.PrintPop),
+                    new MenuApplicationStack("Удалить элемент из стека",methods.PrintPop),
                     new MenuApplicationStack("Вывести вершину стека",methods.PrintTop),
                     new MenuApplicationStack("Вывести содержимое стека",methods.PrintStack),
                     new MenuApplicationMeasurements("Cгенерировать файл",methods.WriteDataFile),
                     new MenuApplicationMeasurements("Тестирование",methods.ExecuteMeasurements),
                     new ReturnMenu("Вернуться назад")
+                }),
+                 new MenuCategory("Queue", new MenuItem[]
+                {
+                    new MenuApplicationPostfixNotation("Вывести содержимое очереди", QueueActions.PrintQueue),
+                    new MenuApplicationPostfixNotation("Добавить данные в очередь", QueueActions.PrintEnqueue),
+                    new MenuApplicationPostfixNotation("Удалить элемент из очереди", QueueActions.PrintDequeue),
+                    new MenuApplicationPostfixNotation("Вывести первый элемент очереди", QueueActions.PrintFirstItemQueue),
+                    new ReturnMenu("Вернуться назад"),
                 }),
                 new MenuCategory("Работа с постфиксной записью", new MenuItem[]
                 {

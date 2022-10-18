@@ -13,6 +13,7 @@ namespace DynamicStructure.DynamicStructure.Core.Queue
     {
         QueueNode<T> head; // головной/первый элемент
         QueueNode<T> tail; // последний/хвостовой элемент
+        public int MaxLengthItems { get; private set; } = 5;
         int count;
         // добавление в очередь
         public void Enqueue(T data)
@@ -25,6 +26,11 @@ namespace DynamicStructure.DynamicStructure.Core.Queue
             else
                 tempNode.Next = tail;
             count++;
+            if (tail.Data.ToString().Length > MaxLengthItems)
+            {
+                MaxLengthItems = tail.Data.ToString().Length;
+            }
+
         }
         // удаление из очереди
         public T Dequeue()
