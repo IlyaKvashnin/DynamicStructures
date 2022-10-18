@@ -259,5 +259,14 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
         {
             throw new NotImplementedException();
         }
+
+        public void FirstToLast()
+        {
+            DoublyListNode<T>? temp = Head;
+            DoublyListNode<T>? node = temp.Next;
+            temp.Next = null;
+            temp.Previous = node;
+            
+        }
     }
 }
