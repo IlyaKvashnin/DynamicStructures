@@ -46,32 +46,29 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             CountItems--;
 
             size--;
-            stackItems[size] = default(T); 
+            stackItems[size] = default(T);
             //Console.WriteLine("Popped " + node.Item);
 
             return node.Item;
         }
-        
+
         public T Top()
         {
             if (tail == null)
             {
-                //Console.WriteLine("Stack is empty");
                 return default(T);
             }
-
-            //Console.WriteLine("Top is " + tail.Item);
 
             return tail.Item;
         }
 
         public void Print()
         {
-            foreach(var item in stackItems)
+            foreach (var item in stackItems)
             {
                 if (item != null)
                 {
-                    //Console.WriteLine("Print " + item);
+                    Console.WriteLine(item);
                 }
             }
         }
@@ -102,9 +99,11 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
 
         public IEnumerator<T> GetEnumerator()
         {
-            for (int i = CountItems - 1; i >= 0; i--)
+            ListNode<T> current = tail;
+            while (current != null)
             {
-                yield return stackItems[i];
+                yield return current.Item;
+                current = current.Next;
             }
         }
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
