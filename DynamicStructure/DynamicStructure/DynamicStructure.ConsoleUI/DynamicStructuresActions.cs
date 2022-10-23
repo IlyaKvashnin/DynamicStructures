@@ -26,8 +26,6 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             ThomastonBankandTrust.TellerLine.Enqueue(Butch);
             ThomastonBankandTrust.TellerLine.Enqueue(John);
 
-            Console.WriteLine("Peek: " + ThomastonBankandTrust.TellerLine.Peek());
-
             ThomastonBankandTrust.QueuePeek(ThomastonBankandTrust.TellerLine);
             // View the queue using a copy 
             ThomastonBankandTrust.QueueContentsCopy(ThomastonBankandTrust.TellerLine);

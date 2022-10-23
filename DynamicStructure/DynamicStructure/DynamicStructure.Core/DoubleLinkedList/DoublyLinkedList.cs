@@ -272,7 +272,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             }
         }
 
-        public int CountDistinctElements()
+        public int NumberNoRepeatingElements()
         {
             DoublyListNode<T>? temp = Head;
             DoublyLinkedList<T> list = new DoublyLinkedList<T>();
@@ -294,7 +294,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             return count;
         }
 
-        public DoublyLinkedList<T> InsertListAfterX(T x)
+        public DoublyLinkedList<T> InsertListAfterItem(T x)
         {
             DoublyListNode<T>? temp = Head;
             DoublyLinkedList<T> list = new DoublyLinkedList<T>();
@@ -333,7 +333,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             }
             return list;
         }
-        public void DeleteAllItemsE(T e)
+        public void DeleteAllItems(T e)
         {
             DoublyListNode<T>? temp = Head;
             while (temp != null)
@@ -347,7 +347,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
 
         }
 
-        public DoublyLinkedList<int> InsertListToList(string path)
+        public DoublyLinkedList<int> InsertIntoList(string path)
         {
             var file = File.ReadAllLines(path);
             var list1 = new DoublyLinkedList<int>();
@@ -372,7 +372,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             return list1.AddCollection(list2);
         }
 
-        public DoublyLinkedList<T> DoubledList()
+        public DoublyLinkedList<T> InsertItself()
         {
             DoublyListNode<T>? temp = Head;
             DoublyLinkedList<T> list = new DoublyLinkedList<T>();

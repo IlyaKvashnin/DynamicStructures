@@ -26,7 +26,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.PrintList();
         }
 
-        public static void PrintCountDistinct()
+        public static void PrintNumberNoRepeatingElements()
         {
             ConsoleHelper.ClearScreen();
             DoublyLinkedList<int> list = new DoublyLinkedList<int> { };
@@ -39,10 +39,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine("Содержимое листа :");
             list.PrintList();
             Console.WriteLine("\n");
-            Console.WriteLine($"Количество уникальных цифр: {list.CountDistinctElements()}");
+            Console.WriteLine($"Количество уникальных цифр: {list.NumberNoRepeatingElements()}");
         }
 
-        public static void PrintInsertListAfterX()
+        public static void PrintInsertListAfterItem()
         {
             ConsoleHelper.ClearScreen();
             DoublyLinkedList<int> list = new DoublyLinkedList<int> { };
@@ -55,10 +55,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine("Введите число после которого хотите сделать вставку");
             var value = Console.ReadLine();
             Console.WriteLine("Содержимое листа после вставки :");
-            list.InsertListAfterX(int.Parse(value)).PrintList();
+            list.InsertListAfterItem(int.Parse(value)).PrintList();
         }
 
-        public static void PrintDeleteAllItemsE()
+        public static void PrintDeleteAllItems()
         {
             ConsoleHelper.ClearScreen();
             DoublyLinkedList<string> list = new DoublyLinkedList<string> { };
@@ -72,24 +72,24 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine("\n");
             Console.WriteLine("Введите число rоторое хотите удалить хотите сделать вставку");
             var value = Console.ReadLine();
-            list.DeleteAllItemsE(value);
+            list.DeleteAllItems(value);
             Console.WriteLine("Содержимое листа после удаления :");
             list.PrintList();
         }
 
-        public static void PrintSecond()
+        public static void PrintChangeLastAndFirstItem()
         {
             ConsoleHelper.ClearScreen();
-            Console.WriteLine("Меняется последний элемент с первым");
+            Console.WriteLine("Меняем последний элемент с первым");
             var test1 = new SinglyLinkedList<int>() { 1, 2, 3 };
             Console.WriteLine($"Список до переноса:  {test1.ToString()}");
-            SinglyLinkedList<int>.ChangeLastAndFirstPosition(test1);
+            SinglyLinkedList<int>.ChangeLastAndFirstItem(test1);
             Console.WriteLine($"Список после переноса:  {test1.ToString()}");
 
 
         }
 
-        public static void PrintChangingPlaces()
+        public static void PrintSwapElements()
         {
             ConsoleHelper.ClearScreen();
             var test = new SinglyLinkedList<int>() { 1, 2, 3, 4, 1, 5 };
@@ -109,7 +109,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             var v1 = Console.ReadLine();
             Console.WriteLine("Введите индекс второго элемента, который хотите поменять местами");
             var v2 = Console.ReadLine();
-            SinglyLinkedList<int>.ChangePlaces(test, int.Parse(v1),int.Parse(v2));
+            SinglyLinkedList<int>.SwapElements(test, int.Parse(v1),int.Parse(v2));
             Console.WriteLine($"Измененный список :{test.ToString()}");
         }
 
@@ -125,15 +125,15 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine($"Вторая часть: {returnedList.ToString()}");
         }
 
-        public static void PrintInsertListToList()
+        public static void PrintInsertIntoList()
         {
             ConsoleHelper.ClearScreen();
             DoublyLinkedList<int> list = new DoublyLinkedList<int> { };
             Console.WriteLine("Список, из двух списков, считанных из файла:");
-            list.InsertListToList("../../../DynamicStructure.Core/DoubleLinkedList/lists.txt").PrintList();
+            list.InsertIntoList("../../../DynamicStructure.Core/DoubleLinkedList/lists.txt").PrintList();
         }
 
-        public static void PrintDoubledList()
+        public static void PrintInsertItself()
         {
             ConsoleHelper.ClearScreen();
             DoublyLinkedList<string> list = new DoublyLinkedList<string> { };
@@ -146,7 +146,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.PrintList();
             Console.WriteLine("\n");
             Console.WriteLine("Содержимое листа после вставки в самого себя :");
-            list.DoubledList().PrintList();
+            list.InsertItself().PrintList();
         }
 
         public static void PrintOrderedInsert()
@@ -160,7 +160,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             test.PrintList();
         }
 
-        public static void PrintInsertIntot()
+        public static void PrintInsertInto()
         {
             ConsoleHelper.ClearScreen();
             var test = new SinglyLinkedList<int>() { 1, 2, 3 };
@@ -183,10 +183,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.Add(8);
             list.Add(9);
             list.Add(1);
-            Console.WriteLine("Содержимое листа :");
+            Console.WriteLine("Содержимое списка :");
             list.PrintList();
             Console.WriteLine("\n");
-            Console.WriteLine($"Содержимое листа после удаления вторых элементов из двух одинаковых элементов : ");
+            Console.WriteLine($"Содержимое списка после удаления вторых элементов из двух одинаковых элементов : ");
             list.DeleteDublicate().PrintList();
         }
     }

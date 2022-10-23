@@ -29,7 +29,7 @@ public static async Task<string> ProcessCard(CreditCard creditCard)
 {
     //Here we can do any API Call to Process the Credit Card
     //But for simplicity we are just delaying the execution for 1 second
-    await Task.Delay(1000);
+    //await Task.Delay(1000);
     string message = $"Credit Card Number: {creditCard.CardNumber} Name: {creditCard.Name} Processed";
     Console.WriteLine($"Credit Card Number: {creditCard.CardNumber} Processed");
     return message;

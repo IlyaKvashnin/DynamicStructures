@@ -44,17 +44,17 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
                  new MenuCategory("Функции листов", new MenuItem[]
                 {
                     new MenuApplicationDynamicStructures("Функция, которая переворачивает список",ListActions.PrintReverse), //1
-                    new MenuApplicationDynamicStructures("Функция, которая переносит в начало (в конец) непустого списка L его последний (первый) элемент",ListActions.PrintSecond), //2
-                    new MenuApplicationDynamicStructures("Функция, которая подсчитывает количество уникальных цифр",ListActions.PrintCountDistinct), //3
-                    new MenuApplicationDynamicStructures("Вставка листа в сам лист после первого вхождения X",ListActions.PrintInsertListAfterX), //5
-                    new MenuApplicationDynamicStructures("Функция, которая вставляет в непустой список L, элементы которого упорядочены по не убыванию, новый элемент Е так, чтобы сохранилась упорядоченность.",ListActions.PrintOrderedInsert), //6
-                    new MenuApplicationDynamicStructures("Функция, которая удаляет все элементы \"E\" из листа",ListActions.PrintDeleteAllItemsE), //7
-                    new MenuApplicationDynamicStructures("Функция, которая вставляет в список L новый элемент F перед первым вхождением элемента Е",ListActions.PrintInsertIntot), //7
-                    new MenuApplicationDynamicStructures("Функция, которая удаляет из списка L второй из двух одинаковых элементов",ListActions.PrintDeleteDublicate), //8
-                    new MenuApplicationDynamicStructures("Функция дописывает к списку L список E. ",ListActions.PrintInsertListToList), //9
+                    new MenuApplicationDynamicStructures("Функция, которая переносит в начало (в конец) непустого списка L его последний (первый) элемент",ListActions.PrintChangeLastAndFirstItem), //2
+                    new MenuApplicationDynamicStructures("Функция, которая подсчитывает количество уникальных цифр",ListActions.PrintNumberNoRepeatingElements), //3
+                    new MenuApplicationDynamicStructures("Функция, которая удаляет из списка второй из двух одинаковых элементов",ListActions.PrintDeleteDublicate), //4
+                    new MenuApplicationDynamicStructures("Функция, которая вставляет список в список после первого вхождения указанного элемента",ListActions.PrintInsertListAfterItem), //5
+                    new MenuApplicationDynamicStructures("Функция, которая вставляет в непустой список , элементы которого упорядочены по не убыванию, новый элемент так, чтобы сохранилась упорядоченность.",ListActions.PrintOrderedInsert), //6
+                    new MenuApplicationDynamicStructures("Функция, которая удаляет все элементы указанные элементы из листа",ListActions.PrintDeleteAllItems), //7
+                    new MenuApplicationDynamicStructures("Функция, которая вставляет в список новый элемент перед первым вхождением указанного элемента",ListActions.PrintInsertInto), //7
+                    new MenuApplicationDynamicStructures("Функция дописывает к списку L список E. ",ListActions.PrintInsertIntoList), //9
                     new MenuApplicationDynamicStructures("Функция, которая разбивает список на две части",ListActions.PrintSplit), // 10
-                    new MenuApplicationDynamicStructures("Функция удваивает список, т.е. приписывает в конец списка себя самого",ListActions.PrintDoubledList), // 11
-                    new MenuApplicationDynamicStructures("Функция, которая меняет местами два элемента",ListActions.PrintChangingPlaces), // 12
+                    new MenuApplicationDynamicStructures("Функция удваивает список, т.е. приписывает в конец списка себя самого",ListActions.PrintInsertItself), // 11
+                    new MenuApplicationDynamicStructures("Функция, которая меняет местами два элемента",ListActions.PrintSwapElements), // 12
                     new ReturnMenu("Вернуться назад"),
                 }),
                 new ReturnMenu("Выход")

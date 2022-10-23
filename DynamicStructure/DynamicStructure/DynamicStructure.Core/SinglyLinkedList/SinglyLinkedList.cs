@@ -400,7 +400,7 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             lastNode.Next = midNode;
         }
 
-        public static void ChangePlaces(SinglyLinkedList<T> list, int index1, int index2)
+        public static void SwapElements(SinglyLinkedList<T> list, int index1, int index2)
         {
             var temp = list.ElementAt<T>(index1);
             list.RemoveAt(index1);
@@ -414,7 +414,7 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
         /// Меняет местами первый и последний элементы
         /// </summary>
         /// <param name="linkedList"></param>
-        public static void ChangeLastAndFirstPosition(SinglyLinkedList<T> linkedList)
+        public static void ChangeLastAndFirstItem(SinglyLinkedList<T> linkedList)
         {
             var temp = linkedList.ElementAt(0);
             linkedList.RemoveFromFront();

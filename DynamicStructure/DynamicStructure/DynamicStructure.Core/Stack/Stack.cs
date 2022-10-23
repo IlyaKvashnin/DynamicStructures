@@ -62,6 +62,16 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             return tail.Item;
         }
 
+        public bool IsEmpty()
+        {
+            if (CountItems == 0)
+            {
+                //Console.WriteLine("Empty");
+                return true;
+            }
+            //Console.WriteLine("Not empty");
+            return false;
+        }
         public void Print()
         {
             foreach (var item in stackItems)
@@ -72,16 +82,18 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
                 }
             }
         }
-
-        public bool IsEmpty()
+        public IEnumerator<T> GetEnumerator()
         {
-            if (CountItems == 0)
+            ListNode<T> current = tail;
+            while (current != null)
             {
-                //Console.WriteLine("Empty");
-                return true;
+                yield return current.Item;
+                current = current.Next;
             }
-            //Console.WriteLine("Not empty");
-            return false;
+        }
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return this.GetEnumerator();
         }
 
         private void initArray(T value)
@@ -95,20 +107,6 @@ namespace DynamicStructure.DynamicStructure.Core.Stack
             }
             stackItems[size] = value;
             size++;
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            ListNode<T> current = tail;
-            while (current != null)
-            {
-                yield return current.Item;
-                current = current.Next;
-            }
-        }
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
         }
     }
 }
