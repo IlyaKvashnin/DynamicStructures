@@ -274,24 +274,26 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
 
         public int NumberNoRepeatingElements()
         {
-            DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
-            while (temp != null)
+            DoublyListNode<T>? temp1 = Head;
+            DoublyListNode<T>? temp2 = Head.Next;
+            int rcount = 0;
+            while (temp1 != null)
             {
-                list.Add(temp.Data);
-                temp = temp.Next;
-            }
-            int count = 0;
-            foreach(T item in list)
-            {
-                list.Remove(item);
-                if (list.Contains(item)) continue;
-                else
+                int fcount = 0;
+                temp2 = temp1.Next;
+                while (temp2 != null)
                 {
-                    count++;
+                    if (temp1.Data.Equals(temp2.Data))
+                    {
+                        fcount++;
+                    }
+                    temp2 = temp2.Next;
                 }
+                if (fcount == 0)
+                    rcount++;
+                temp1 = temp1.Next;
             }
-            return count;
+            return rcount;
         }
 
         public DoublyLinkedList<T> InsertListAfterItem(T x)
