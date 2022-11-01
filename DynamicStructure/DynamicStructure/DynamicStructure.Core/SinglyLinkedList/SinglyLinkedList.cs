@@ -399,59 +399,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
             ListNode<T> midNode = GetMiddleItem();
             lastNode.Next = midNode;
         }
-
-        public static void SwapElements(SinglyLinkedList<T> list, int index1, int index2)
-        {
-            var temp = list.ElementAt<T>(index1);
-            list.RemoveAt(index1);
-            list.InsertAt(index1, list.ElementAt<T>(index2 - 1));
-            list.RemoveAt(index2);
-            list.InsertAt(index2, temp);
-
-        }
-
-        public static SinglyLinkedList<T> Split(SinglyLinkedList<T> linkedList, T num)
-        {
-            SinglyLinkedList<T> newLinkedList = new SinglyLinkedList<T>();
-            SinglyLinkedList<T> returnLinkedList = new SinglyLinkedList<T>();
-            for (int i = 0; i < linkedList.Count(); i++)
-            {
-                if (linkedList.ElementAt(i).Equals(num))
-                {
-                    newLinkedList.Add(linkedList.ElementAt(i));
-                    break;
-                }
-                newLinkedList.Add(linkedList.ElementAt(i));
-            }
-
-            for (int j = newLinkedList.Count(); j < linkedList.Count(); j++)
-            {
-                returnLinkedList.Add(linkedList.ElementAt(j));
-            }
-
-            linkedList.Clear();
-            for (int i = 0; i < newLinkedList.Count(); i++)
-            {
-                linkedList.Add(newLinkedList.ElementAt(i));
-            }
-
-            return returnLinkedList;
-
-        }
-
-        public static void InsertInto(SinglyLinkedList<T> linkedList, T newElem, T elem)
-        {
-            int index = 0;
-            for (int i = 0; i < linkedList.Count(); i++)
-            {
-                if (linkedList.ElementAt<T>(i).Equals(elem))
-                {
-                    index = i;
-                    break;
-                }
-            }
-            linkedList.InsertAt(index, newElem);
-        }
     }
 
 }

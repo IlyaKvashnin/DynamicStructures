@@ -91,39 +91,37 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         public static void PrintSwapElements()
         {
             ConsoleHelper.ClearScreen();
-            var test = new SinglyLinkedList<int>() { 1, 2, 3, 4, 1, 5 };
+            var test = new DoublyLinkedList<int>() { 1, 2, 3, 4, 5 };
             Console.WriteLine("Элементы, которые содержит список :");
-            for (int i = 0; i < test.Count; i++)
-            {
-                Console.Write(test[i] + " ");
-            }
+            test.PrintList();
             Console.WriteLine();
-            Console.WriteLine("Индексы: ");
-            for (int i = 0; i < test.Count; i++)
-            {
-                Console.Write(i + " ");
-            }
-            Console.WriteLine();
-            Console.WriteLine("Введите индекс первого элемента, который хотите поменять местами");
+         
+            Console.WriteLine("Введите первый элемента, который хотите поменять местами");
             var v1 = Console.ReadLine();
-            Console.WriteLine("Введите индекс второго элемента, который хотите поменять местами");
+            Console.WriteLine("Введите второй элемента, который хотите поменять местами");
             var v2 = Console.ReadLine();
-            SinglyLinkedList<int>.SwapElements(test, int.Parse(v1),int.Parse(v2));
-            Console.WriteLine($"Измененный список :{test.ToString()}");
+            test.SwapElements(int.Parse(v1),int.Parse(v2));
+            Console.WriteLine($"Измененный список :");
+            test.PrintList();
         }
 
         public static void PrintSplit()
         {
             ConsoleHelper.ClearScreen();
-            var test = new SinglyLinkedList<int>() { 1, 2, 3, 4, 1, 5 };
-            Console.WriteLine($"Содержимое списка : {test.ToString()}");
+            var test = new DoublyLinkedList<int>() { 1, 2, 3, 4, 5 };
+            Console.WriteLine($"Содержимое списка :");
+            test.PrintList();
+            Console.WriteLine();
             Console.WriteLine("Введите число по которому хотите разбить список");
             var value = Console.ReadLine();
-            var returnedList = SinglyLinkedList<int>.Split(test, int.Parse(value));
-            Console.WriteLine($"Первая часть: {test.ToString()}");
-            Console.WriteLine($"Вторая часть: {returnedList.ToString()}");
+            var returnedList = test.Split(int.Parse(value));
+            Console.WriteLine($"Первая часть:");
+            returnedList.Item1.PrintList();
+            Console.WriteLine();
+            Console.WriteLine($"Вторая часть:");
+            returnedList.Item2.PrintList();
         }
-
+        
         public static void PrintInsertIntoList()
         {
             ConsoleHelper.ClearScreen();
@@ -135,17 +133,13 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         public static void PrintInsertItself()
         {
             ConsoleHelper.ClearScreen();
-            DoublyLinkedList<string> list = new DoublyLinkedList<string> { };
-            list.Add("abc");
-            list.Add("ba");
-            list.Add("acc");
-            list.Add("abc");
-            list.Add("yy");
+            DoublyLinkedList<string> list = new DoublyLinkedList<string> {"a","b","c","e","f" };
             Console.WriteLine("Содержимое листа :");
             list.PrintList();
             Console.WriteLine("\n");
             Console.WriteLine("Содержимое листа после вставки в самого себя :");
-            list.InsertItself().PrintList();
+            list.InsertItself();
+            list.PrintList();
         }
 
         public static void PrintOrderedInsert()
@@ -162,14 +156,17 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         public static void PrintInsertInto()
         {
             ConsoleHelper.ClearScreen();
-            var test = new SinglyLinkedList<int>() { 1, 2, 3 };
-            Console.WriteLine($"Содержимое списка : {test.ToString()}");
+            var test = new DoublyLinkedList<int>() { 1, 2, 3, 4, 5 };
+            Console.WriteLine($"Содержимое списка :");
+            test.PrintList();
+            Console.WriteLine();
             Console.WriteLine("Введите число, которое хотите добавить в список");
             var value = Console.ReadLine();
             Console.WriteLine("Введите число, перед которым вы хотите добавить новое значение добавить в список");
             var value1 = Console.ReadLine();
-            SinglyLinkedList<int>.InsertInto(test, int.Parse(value), int.Parse(value1));
-            Console.WriteLine($"Измененный список : {test.ToString()}");
+            test.InsertInto(int.Parse(value), int.Parse(value1));
+            Console.WriteLine($"Измененный список :");
+            test.PrintList();
         }
 
         public static void PrintDeleteDublicate()

@@ -67,7 +67,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
         public void Insert(int index, T data, string message)
         {
 
-            if (index >= Count || index < 0)
+            if (index > Count || index < 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(index), message);
             }
@@ -315,20 +315,23 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             list2.AddCollection(list);
             return list2;
         }
-        public void DeleteDublicate()
+        public DoublyLinkedList<T> DeleteDublicate()
         {
             DoublyListNode<T>? temp = Head;
+            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
             while (temp != null)
             {
-                if (Contains(temp.Data))
+                if (list.Contains(temp.Data))
                 {
                     temp = temp.Next;
                 }
                 else
                 {
+                    list.Add(temp.Data);
                     temp = temp.Next;
                 }
             }
+            return list;
         }
         public void DeleteAllItems(T e)
         {
@@ -348,7 +351,6 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
         {
             var file = File.ReadAllLines(path);
             var list1 = new DoublyLinkedList<int>();
-            var list2 = new DoublyLinkedList<int>();
             for (int i = 0; i < file.Count(); i++)
             {
                 if (i == 0)
@@ -356,35 +358,28 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
                     for (int j = 0; j < file[i].Split(" ").Length; j++)
                     {
                         list1.Add(int.Parse(file[i].Split(" ")[j]));
-                    }        
+                    }
                 }
                 else
                 {
                     for (int j = 0; j < file[i].Split(" ").Length; j++)
                     {
-                        list2.Add(int.Parse(file[i].Split(" ")[j]));
+                        list1.Add(int.Parse(file[i].Split(" ")[j]));
                     }
                 }
             }
-            return list1.AddCollection(list2);
+            return list1;
         }
 
-        public DoublyLinkedList<T> InsertItself()
+        public void InsertItself()
         {
-            DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
-            DoublyLinkedList<T> list2 = new DoublyLinkedList<T>();
-            while (temp != null)
+            DoublyListNode<T> temp = Head;
+            int count = Count;
+            for (int i = 0; i < count; i++)
             {
-                list.Add(temp.Data);
+                Add(temp.Data);
                 temp = temp.Next;
             }
-            foreach (var item in list)
-            {
-                list2.Add(item);
-            }
-            list.AddCollection(list2);
-            return list;
         }
 
         public static void OrderedInsert(DoublyLinkedList<T> linkedList, T newElem)
@@ -395,17 +390,97 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
         }
         public void ChangeLastAndFirstItem()
         {
-            //var tail = Tail;
-            //Tail.Data = Head.Data;
-            //Head.Data = tail;
-            var head = Head;
-            var tail = Tail;
+            var tail = Tail.Data;
+            Tail.Data = Head.Data;
+            Head.Data = tail;
 
-            Remove(head.Data);
-            Remove(tail.Data);
-            AddToStart(tail.Data);
-            Add(head.Data);
+            //var head = Head;
+            //var tail = Tail;
+
+            //Remove(head.Data);
+            //Remove(tail.Data);
+            //AddToStart(tail.Data);
+            //Add(head.Data);
+        }
+        public void SwapElements(T elem1, T elem2)
+        {
+            int index1 = IndexOf(elem1);
+            int index2 = IndexOf(elem2);
+
+            RemoveAt(index1);
+            Count++;
+            if (index1 == 0)
+            {
+                AddToStart(elem2);
+                Count--;
+            }
+            else
+            {
+                Insert(index1, elem2, "");
+                Count--;
+            }
+            RemoveAt(index2);
+            Count++;
+            if (index2 == Count)
+            {
+                Add(elem1);
+                Count--;
+            }
+            else
+            {
+                Insert(index2, elem1, "");
+                Count--;
+            }
+
+        }
+        public (DoublyLinkedList<T>, DoublyLinkedList<T>) Split(T x)
+        {
+            DoublyListNode<T> listing = head;
+            DoublyLinkedList<T> listing2 = new DoublyLinkedList<T>();
+
+            for (int i = 0; i < count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(listing.Data, x))
+                {
+                    listing = listing.Next;
+                    for (int j = i; j < count - 1; j++)
+                    {
+                        listing2.Add(listing.Data);
+                        listing = listing.Next;
+                    }
+
+                    for (int j = 0; j < listing2.Count; j++)
+                    {
+                        tail.Previous.Next = tail.Next;
+                        tail = tail.Previous;
+                    }
+                    return (this, listing2);
+                }
+                listing = listing.Next;
+            }
+            return (this, listing2);
         }
 
+        public void InsertInto(T newElem, T elem)
+        {
+            DoublyListNode<T> listing = Head;
+            int count = Count;
+            for (int i = 0; i < count; i++)
+            {
+                if (EqualityComparer<T>.Default.Equals(listing.Data, elem))
+                {
+                    if (IndexOf(elem) == Count - 1)
+                    {
+                        Count++;
+                        Insert(IndexOf(elem), newElem, "");
+                    }
+                    else
+                    {
+                        Insert(IndexOf(elem), newElem, "");
+                    }
+                }
+                listing = listing.Next;
+            }
+        }
     }
 }
