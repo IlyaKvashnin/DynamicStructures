@@ -410,21 +410,6 @@ namespace DynamicStructure.DynamicStructure.Core.SinglyLinkedList
 
         }
 
-        /// <summary>
-        /// Меняет местами первый и последний элементы
-        /// </summary>
-        /// <param name="linkedList"></param>
-        public static void ChangeLastAndFirstItem(SinglyLinkedList<T> linkedList)
-        {
-            var temp = linkedList.ElementAt(0);
-            linkedList.RemoveFromFront();
-            linkedList.InsertAt(0, linkedList.ElementAt(linkedList.Count() - 1));
-            linkedList.RemoveFromBack();
-            linkedList.InsertAt(linkedList.Count() - 1, temp);
-
-
-        }
-
         public static SinglyLinkedList<T> Split(SinglyLinkedList<T> linkedList, T num)
         {
             SinglyLinkedList<T> newLinkedList = new SinglyLinkedList<T>();

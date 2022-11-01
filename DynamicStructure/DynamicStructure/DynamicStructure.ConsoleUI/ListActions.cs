@@ -79,14 +79,13 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
 
         public static void PrintChangeLastAndFirstItem()
         {
+            DoublyLinkedList<int> list = new DoublyLinkedList<int>() { 1, 2, 3, 4, 5 };
             ConsoleHelper.ClearScreen();
             Console.WriteLine("Меняем последний элемент с первым");
-            var test1 = new SinglyLinkedList<int>() { 1, 2, 3 };
-            Console.WriteLine($"Список до переноса:  {test1.ToString()}");
-            SinglyLinkedList<int>.ChangeLastAndFirstItem(test1);
-            Console.WriteLine($"Список после переноса:  {test1.ToString()}");
-
-
+            list.PrintList();
+            list.ChangeLastAndFirstItem();
+            Console.WriteLine("\n");
+            list.PrintList();
         }
 
         public static void PrintSwapElements()
@@ -187,7 +186,8 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.PrintList();
             Console.WriteLine("\n");
             Console.WriteLine($"Содержимое списка после удаления вторых элементов из двух одинаковых элементов : ");
-            list.DeleteDublicate().PrintList();
+            list.DeleteDublicate();
+            list.PrintList();
         }
     }
 }

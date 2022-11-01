@@ -16,6 +16,15 @@ namespace DynamicStructure
 
             MenuLogic mainMenu = new MenuLogic(MainMenu.mainMenu);
             mainMenu.Run();
+            //DoublyLinkedList<int> list = new DoublyLinkedList<int>();
+            //list.Add(1);
+            //list.Add(2);
+            //list.Add(3);
+            //list.PrintList();
+            //list.ChangeLastAndFirstItem();
+            //Console.WriteLine("\n");
+            //list.PrintList();
+
 
             ////3
             //DoublyLinkedList<int> list = new DoublyLinkedList<int> { };

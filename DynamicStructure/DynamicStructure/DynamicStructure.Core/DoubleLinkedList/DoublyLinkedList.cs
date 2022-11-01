@@ -315,23 +315,20 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             list2.AddCollection(list);
             return list2;
         }
-        public DoublyLinkedList<T> DeleteDublicate()
+        public void DeleteDublicate()
         {
             DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
             while (temp != null)
             {
-                if (list.Contains(temp.Data))
+                if (Contains(temp.Data))
                 {
                     temp = temp.Next;
                 }
                 else
                 {
-                    list.Add(temp.Data);
                     temp = temp.Next;
                 }
             }
-            return list;
         }
         public void DeleteAllItems(T e)
         {
@@ -396,7 +393,19 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             linkedList.Sort();
 
         }
+        public void ChangeLastAndFirstItem()
+        {
+            //var tail = Tail;
+            //Tail.Data = Head.Data;
+            //Head.Data = tail;
+            var head = Head;
+            var tail = Tail;
 
-       
+            Remove(head.Data);
+            Remove(tail.Data);
+            AddToStart(tail.Data);
+            Add(head.Data);
+        }
+
     }
 }
