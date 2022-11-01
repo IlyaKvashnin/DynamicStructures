@@ -65,18 +65,13 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
         public static void PrintDeleteAllItems()
         {
             ConsoleHelper.ClearScreen();
-            DoublyLinkedList<string> list = new DoublyLinkedList<string> { };
-            list.Add("abc");
-            list.Add("ba");
-            list.Add("acc");
-            list.Add("abc");
-            list.Add("yy");
+            DoublyLinkedList<int> list = new DoublyLinkedList<int> {1,2,3,4,5 };
             Console.WriteLine("Содержимое листа :");
             list.PrintList();
             Console.WriteLine("\n");
-            Console.WriteLine("Введите число rоторое хотите удалить хотите сделать вставку");
+            Console.WriteLine("Введите число которое хотите удалить");
             var value = Console.ReadLine();
-            list.DeleteAllItems(value);
+            list.DeleteAllItems(int.Parse(value);
             Console.WriteLine("Содержимое листа после удаления :");
             list.PrintList();
         }
