@@ -49,6 +49,8 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.Add(1);
             list.Add(2);
             list.Add(3);
+            //list.Add(4);
+            //list.Add(5);
             Console.WriteLine("Содержимое листа :");
             list.PrintList();
             Console.WriteLine("\n");
@@ -148,7 +150,7 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             var test = new DoublyLinkedList<int>() { 0, 2, 5 };
             Console.WriteLine("Введите число, которое хотите добавить в список");
             var value = Console.ReadLine();
-            DoublyLinkedList<int>.OrderedInsert(test, int.Parse(value));
+            test.OrderedInsert(test, int.Parse(value));
             Console.WriteLine("Список с добавленным значением :");
             test.PrintList();
         }
@@ -176,9 +178,10 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             list.Add(1);
             list.Add(3);
             list.Add(5);
-            list.Add(8);
+            list.Add(3);
             list.Add(9);
             list.Add(1);
+            list.Add(3);
             Console.WriteLine("Содержимое списка :");
             list.PrintList();
             Console.WriteLine("\n");

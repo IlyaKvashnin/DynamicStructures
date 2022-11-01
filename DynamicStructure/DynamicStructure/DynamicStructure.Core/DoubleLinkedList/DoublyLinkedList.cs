@@ -85,7 +85,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             {
                 AddToStart(data);
             }
-            else if (index == Count - 1)
+            else if (index == Count)
             {
                 Add(data);
             }
@@ -103,6 +103,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             foreach (T data in list)
             {
                 Insert(index, data, "The index is out of bounds!");
+                index++;
             }
             return this;
         }
@@ -111,6 +112,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             foreach (T data in collection)
             {
                 Insert(index, data, "The index is out of bounds!");
+                
             }
             return this;
         }
@@ -274,46 +276,51 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
 
         public int NumberNoRepeatingElements()
         {
-            DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
-            while (temp != null)
+            DoublyListNode<T>? temp1 = Head;
+            DoublyListNode<T>? temp2 = Head.Next;
+            int rcount = 0;
+            while (temp1 != null)
             {
-                list.Add(temp.Data);
-                temp = temp.Next;
-            }
-            int count = 0;
-            foreach(T item in list)
-            {
-                list.Remove(item);
-                if (list.Contains(item)) continue;
-                else
+                int fcount = 0;
+                temp2 = temp1.Next;
+                while (temp2 != null)
                 {
-                    count++;
+                    if (temp1.Data.Equals(temp2.Data))
+                    {
+                        fcount++;
+                    }
+                    temp2 = temp2.Next;
                 }
+                if (fcount == 0)
+                    rcount++;
+                temp1 = temp1.Next;
             }
-            return count;
+            return rcount;
         }
 
         public DoublyLinkedList<T> InsertListAfterItem(T x)
         {
             DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
-            DoublyLinkedList<T> list2 = new DoublyLinkedList<T>();
+            var copy = new DoublyLinkedList<T>();
+            int counter = 1;
             while (temp != null)
             {
-                list.Add(temp.Data);
+                copy.Add(temp.Data);
                 temp = temp.Next;
             }
-            foreach (var item in list)
+            temp = Head;
+            while (temp != null)
             {
-                list2.Add(item);
-                if (EqualityComparer<T>.Default.Equals(item, x))
+               
+                if (temp.Data.Equals(x))
                 {
+                    InsertCollection(counter, copy);
                     break;
                 }
+                counter++;
+                temp = temp.Next;
             }
-            list2.AddCollection(list);
-            return list2;
+            return this;
         }
         public DoublyLinkedList<T> DeleteDublicate()
         {
@@ -330,6 +337,8 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
                     list.Add(temp.Data);
                     temp = temp.Next;
                 }
+                
+                temp1 = temp1.Next;
             }
             return list;
         }
