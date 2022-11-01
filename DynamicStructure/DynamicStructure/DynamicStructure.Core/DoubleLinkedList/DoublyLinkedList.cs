@@ -298,7 +298,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             return rcount;
         }
 
-        public DoublyLinkedList<T> InsertListAfterItem(T x)
+        public void InsertListAfterItem(T x)
         {
             DoublyListNode<T>? temp = Head;
             var copy = new DoublyLinkedList<T>();
@@ -311,7 +311,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             temp = Head;
             while (temp != null)
             {
-               
+
                 if (temp.Data.Equals(x))
                 {
                     InsertCollection(counter, copy);
@@ -320,27 +320,45 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
                 counter++;
                 temp = temp.Next;
             }
-            return this;
         }
-        public DoublyLinkedList<T> DeleteDublicate()
+        public void DeleteDublicate()
         {
-            DoublyListNode<T>? temp = Head;
-            DoublyLinkedList<T> list = new DoublyLinkedList<T>();
-            while (temp != null)
+            DoublyListNode<T>? temp1 = Head;
+            DoublyListNode<T>? temp2 = Head.Next;
+            while (temp1 != null)
             {
-                if (list.Contains(temp.Data))
+                int rcount = 0;
+                temp2 = temp1.Next;
+                while (temp2 != null)
                 {
-                    temp = temp.Next;
+
+                    if (temp1.Data.Equals(temp2.Data))
+                    {
+                        rcount++;
+                        if (rcount == 1)
+                        {
+                            if (temp2 != null)
+                            {
+                                temp2.Previous.Next = temp2.Next;
+                                if (temp2.Next == null) { Tail = temp2; }
+                                else { temp2.Next.Previous = temp2.Previous; }
+                                Count--;
+                            }
+
+                            else
+                            {
+                                Head = Head.Next;
+                                Count--;
+                                if (Count == 0) { Tail = null; }
+                                else { Head.Previous = null; }
+                            }
+                        }
+                    }
+                    temp2 = temp2.Next;
                 }
-                else
-                {
-                    list.Add(temp.Data);
-                    temp = temp.Next;
-                }
-                
-                temp = temp.Next;
+
+                temp1 = temp1.Next;
             }
-            return list;
         }
         public void DeleteAllItems(T e)
         {
@@ -391,10 +409,29 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             }
         }
 
-        public void OrderedInsert(DoublyLinkedList<T> linkedList, T newElem)
+        public void OrderedInsert(DoublyLinkedList<int> linkedList, int newElem)
         {
-            linkedList.Add(newElem);
-            linkedList.Sort();
+            var temp = linkedList.Head;
+            int counter = 0;
+            for (DoublyListNode<int>? current = temp; current != null; current = current.Next)
+            {
+                counter++;
+                if (current.Next != null)
+                {
+                    if (current.Data <= newElem && current.Next.Data >= newElem)
+                    {
+                        linkedList.Insert(counter, newElem, "");
+                        break;
+                    }
+
+                }
+                if (counter == linkedList.Count)
+                {
+                    linkedList.Add(newElem);
+                    break;
+                }
+
+            }
 
         }
         public void ChangeLastAndFirstItem()

@@ -57,7 +57,9 @@ namespace DynamicStructure.DynamicStructure.ConsoleUI
             Console.WriteLine("Введите число после которого хотите сделать вставку");
             var value = Console.ReadLine();
             Console.WriteLine("Содержимое листа после вставки :");
-            list.InsertListAfterItem(int.Parse(value)).PrintList();
+            list.InsertListAfterItem(int.Parse(value));
+            Console.WriteLine();
+            list.PrintList();
         }
 
         public static void PrintDeleteAllItems()
