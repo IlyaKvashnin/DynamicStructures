@@ -395,6 +395,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
                     }
                 }
             }
+
             return list1;
         }
 
