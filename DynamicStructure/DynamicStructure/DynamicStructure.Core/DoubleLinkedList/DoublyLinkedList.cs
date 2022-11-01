@@ -338,7 +338,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
                     temp = temp.Next;
                 }
                 
-                temp1 = temp1.Next;
+                temp = temp.Next;
             }
             return list;
         }
@@ -391,7 +391,7 @@ namespace DynamicStructure.DynamicStructure.Core.DoubleLinkedList
             }
         }
 
-        public static void OrderedInsert(DoublyLinkedList<T> linkedList, T newElem)
+        public void OrderedInsert(DoublyLinkedList<T> linkedList, T newElem)
         {
             linkedList.Add(newElem);
             linkedList.Sort();
